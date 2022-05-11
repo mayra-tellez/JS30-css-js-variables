@@ -1,11 +1,11 @@
-const handleUpdate = () => {
-  console.log("click");
-};
-
 const inputs = document.querySelectorAll(".controls input");
 
-inputs.forEach(input => input.addEventListener("change", handleUpdate));
+const handleUpdate = (e) => {
+  const suffix = e.target.dataset.sizing || "";
+  // console.log("Document Element:", document.documentElement.style.setProperty(`--${e.target.name}`, e.target.value, suffix));
+  document.documentElement.style.setProperty(`--${e.target.name}`, `${e.target.value}${suffix}`);
+};
 
-// for (let input of inputs) {
-//   input.addEventListener("input", handleUpdate);
-// };
+inputs.forEach(input => input.addEventListener("change", handleUpdate));
+inputs.forEach(input => input.addEventListener("mousemove", handleUpdate));
+inputs.forEach(input => input.addEventListener("input", handleUpdate));
